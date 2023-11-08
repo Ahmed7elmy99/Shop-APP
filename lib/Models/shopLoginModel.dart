@@ -1,16 +1,13 @@
 class shopLoginModel {
   bool? status;
   String? message;
- UserData? data;
-
+  UserData? data;
 
   shopLoginModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    data = json['data'] != null ?UserData.fromJson(json['data']) : null;
+    data = json['data'] != null ? UserData.fromJson(json['data'] as Map<String, dynamic>) : null;
   }
-
-
 }
 
 class UserData {
@@ -23,8 +20,6 @@ class UserData {
   int? credit;
   String? token;
 
-  
-
   UserData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
@@ -35,6 +30,4 @@ class UserData {
     credit = json['credit'];
     token = json['token'];
   }
-
-  
 }

@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
                 )
         ],
         child: MaterialApp(
-          home: OnBoardingScreen(),
+          home: startWiget,
           debugShowCheckedModeBanner: false,
         ));
   }

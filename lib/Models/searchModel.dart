@@ -20,10 +20,10 @@ class Data {
   int? from;
   int? lastPage;
   String? lastPageUrl;
-  Null? nextPageUrl;
+  Null nextPageUrl;
   String? path;
   int? perPage;
-  Null? prevPageUrl;
+  Null prevPageUrl;
   int? to;
   int? total;
 
@@ -56,8 +56,8 @@ class Data {
 
 class Product {
   int? id;
-  dynamic? price;
-  dynamic? oldPrice;
+  dynamic price;
+  dynamic oldPrice;
   int? discount;
   String? image;
   String? name;

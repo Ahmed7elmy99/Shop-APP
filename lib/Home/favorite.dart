@@ -17,9 +17,9 @@ class FavoriteScreen extends StatelessWidget {
       {
    return   ConditionalBuilder(condition: shopCubit.get(context).favoritesModel!=null, builder: (context)=>  ListView.separated(
           itemBuilder: (context,index) => buildFavItem(shopCubit.get(context).favoritesModel!.data!.data![index].product!,context),
-          separatorBuilder: (context, index) => SizedBox(height: 5,),
+          separatorBuilder: (context, index) =>const SizedBox(height: 5,),
           itemCount: shopCubit.get(context).favoritesModel!.data!.data!.length,
-        ), fallback: ( context) =>Center(child: CircularProgressIndicator()));});
+        ), fallback: ( context) =>const Center(child: CircularProgressIndicator()));});
       
       }
   }
@@ -42,15 +42,15 @@ class FavoriteScreen extends StatelessWidget {
                   if(model.discount!=0)
                   Container(
                     color: Colors.red,
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: Text(
+                    padding:const EdgeInsets.symmetric(horizontal: 5),
+                    child:const Text(
                       "DISCOUNT",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ],
               ),
-              SizedBox(width: 10), // Adjust the width as needed
+            const  SizedBox(width: 10), // Adjust the width as needed
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,28 +59,28 @@ class FavoriteScreen extends StatelessWidget {
                     model.name!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style:const TextStyle(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
-                    Spacer(),
+             const       Spacer(),
                     Row(
                       children: [
                         Text(
                         model.price.toString()
-                         , style: TextStyle(
+                         , style:const TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.blue),
                         ),
-                        SizedBox(width: 10), // Adjust the width as needed
+                   const     SizedBox(width: 10), // Adjust the width as needed
                               if(model.discount!=0)
                           Text(
                           model.oldPrice.toString(),
-                            style: TextStyle(
+                            style:const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
                               decoration: TextDecoration.lineThrough,
                             ),
                           ),
-                        Spacer(),
+                   const     Spacer(),
                         IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: () {
@@ -92,7 +92,7 @@ class FavoriteScreen extends StatelessWidget {
                               ? kMainColor
                               : Colors.grey,
                             radius: 15,
-                            child: Icon(
+                            child:const Icon(
                               Icons.favorite_border,
                               color: Colors.white,
                               size: 20,

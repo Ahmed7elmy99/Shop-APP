@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:e_commerce1/cache/cacheHelper.dart';
 import 'package:e_commerce1/components.dart';
 import 'package:e_commerce1/constants/constants.dart';
@@ -72,7 +73,7 @@ class SignupScreen extends StatelessWidget {
                                 color: Colors.grey,
                               ),
                         ),
-                        SizedBox(
+                    const    SizedBox(
                           height: 30.0,
                         ),
                                 CustomTextField(
@@ -101,6 +102,9 @@ class SignupScreen extends StatelessWidget {
                                     hint: 'Phone',
                                     controller: phone),
                                 const SizedBox(height: 16),
+                                  ConditionalBuilder(
+                        condition: !(state is ShopRegisterLoadingState),
+                        builder: (context) =>
                                 ElevatedButton(
                                     style: ButtonStyle(
                                       backgroundColor:
@@ -109,7 +113,7 @@ class SignupScreen extends StatelessWidget {
                                     ),
                                     onPressed: () async {
                                       if (_formKey.currentState!.validate()) {
-                                        ShopRegisterCubit.get(context)
+                                  await      ShopRegisterCubit.get(context)
                                             .userRegister(
                                                 name: name.text,
                                                 email: email.text,
@@ -117,29 +121,32 @@ class SignupScreen extends StatelessWidget {
                                                 phone: phone.text);
                                       }
                                     },
-                                    child: Center(
-                                      child: const Text(
+                                    child:const Center(
+                                      child:  Text(
                                         'Sign up',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
-                                    )),
+                                    ),
+                                  
+                                    ),
+                                       fallback: (context) =>const CircularProgressIndicator(),),
                                 const SizedBox(height: 16),
                                   Row(
                         children: [
 
 
-                          Text("   Already Have Account?",
+                     const     Text("   Already Have Account?",
                               style: TextStyle(
                                 color: kMainColor,
                                 fontWeight: FontWeight.bold,
                               ),),
-                              SizedBox(width: 30,),
+                        const      SizedBox(width: 30,),
                           TextButton(
                             onPressed: () {
                             navigateAndFinish(context, LoginScreen());
                             },
-                            child: Text(
+                            child:const Text(
                            '        Return To Login',
                               style: TextStyle(
                                 color: kMainColor,

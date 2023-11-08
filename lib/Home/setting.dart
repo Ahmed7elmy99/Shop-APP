@@ -47,7 +47,7 @@ class settingScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           if (state is ShopFavoritesLoadingState)
-                            LinearProgressIndicator(),
+                const            LinearProgressIndicator(),
                           const SizedBox(height: 16),
                           CustomTextField(
                               keyboardType: TextInputType.name,
@@ -106,7 +106,7 @@ class settingScreen extends StatelessWidget {
                   ),
                 ),
             fallback: (BuildContext context) =>
-                Center(child: CircularProgressIndicator()));
+            const    Center(child: CircularProgressIndicator()));
       },
     );
   }

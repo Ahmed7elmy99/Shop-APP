@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:e_commerce1/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +42,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       keyboardType: keyboardType,
       onFieldSubmitted:onSubmit ,
+      
       controller: controller,
       validator: (value) {
         if ((value!.isEmpty)) {
@@ -56,19 +56,20 @@ class CustomTextField extends StatelessWidget {
       
       decoration: InputDecoration(
         hintText: hint,
+        
         prefixIcon: Icon(
           icon,
           color: kMainColor,
         ),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: kMainColor)),
+            borderSide:const BorderSide(color: kMainColor)),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: kMainColor)),
+            borderSide: const BorderSide(color: kMainColor)),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: kMainColor)),
+            borderSide:const BorderSide(color: kMainColor)),
       ),
     );
   }

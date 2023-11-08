@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 value: state.loginModel.data!.token,
               ).then((value) {
                 token = state.loginModel.data!.token!;
-              navigateAndFinish(context,productScreen());
+              navigateAndFinish(context,const productScreen());
         
               });
               showToast(
@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
         builder: (context, state) => Scaffold(
           appBar: AppBar(
             backgroundColor: kMainColor,
-            title: Text('Login'),
+            title:const Text('Login'),
           ),
           body: Center(
             child: SingleChildScrollView(
@@ -81,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                                 color: Colors.grey,
                               ),
                         ),
-                        SizedBox(
+               const         SizedBox(
                           height: 30.0,
                         ),
                       CustomTextField(
@@ -90,14 +90,14 @@ class LoginScreen extends StatelessWidget {
                         hint: 'Email',
                         controller: emailController,
                       ),
-                      SizedBox(height: 16),
+                  const    SizedBox(height: 16),
                       CustomTextField(
                         keyboardType: TextInputType.visiblePassword,
                         icon: Icons.lock,
                         hint: 'Password',
                         controller: passwordController,
                       ),
-                      SizedBox(height: 16),
+                  const    SizedBox(height: 16),
                       ConditionalBuilder(
                         condition: !(state is ShopLoginLoadingState),
                         builder: (context) => ElevatedButton(
@@ -113,32 +113,32 @@ class LoginScreen extends StatelessWidget {
                               );
                             }
                           },
-                          child: Center(
+                          child:const Center(
                             child: Text(
                               'Login',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                        fallback: (context) => CircularProgressIndicator(),
+                        fallback: (context) =>const CircularProgressIndicator(),
                       ),
-                      SizedBox(height: 16),
+                 const     SizedBox(height: 16),
                       Row(
                         children: [
 
 
-                          Text("   'Don\'t have an account?",
+                       const   Text("   'Don\'t have an account?",
                               style: TextStyle(
                                 color: kMainColor,
                                 fontWeight: FontWeight.bold,
                               ),),
-                              SizedBox(width: 30,),
+                       const       SizedBox(width: 30,),
                           TextButton(
                             onPressed: () {
                              navigateAndFinish(context, SignupScreen())
                               ;
                             },
-                            child: Text(
+                            child:const Text(
                            '       Sign up',
                               style: TextStyle(
                                 color: kMainColor,

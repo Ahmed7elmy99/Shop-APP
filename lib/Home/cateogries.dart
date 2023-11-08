@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce1/Home/cubit.dart';
 import 'package:e_commerce1/Home/states.dart';
 import 'package:e_commerce1/Models/categoriesModel.dart';
@@ -15,7 +16,7 @@ class CategoriesScreen extends StatelessWidget
       {
         return ListView.separated(
           itemBuilder: (context, index) => buildCatItem(shopCubit.get(context).categoriesModel!.data!.data![index]),
-          separatorBuilder: (context, index) => SizedBox(width: 15,),
+          separatorBuilder: (context, index) =>const SizedBox(width: 15,),
           itemCount: shopCubit.get(context).categoriesModel!.data!.data!.length,
         );
       },
@@ -28,23 +29,23 @@ class CategoriesScreen extends StatelessWidget
       children:
       [
         Image(
-          image: NetworkImage(model.image!),
+          image:NetworkImage( model.image!),
           width: 80.0,
           height: 80.0,
           fit: BoxFit.cover,
         ),
-        SizedBox(
+     const   SizedBox(
           width: 20.0,
         ),
         Text(
           model.name!,
-          style: TextStyle(
+          style:const TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
         ),
-        Spacer(),
-        Icon(
+   const     Spacer(),
+      const  Icon(
           Icons.arrow_forward_ios,
         ),
       ],

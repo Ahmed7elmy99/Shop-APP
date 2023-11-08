@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:dio/dio.dart';
 
@@ -25,9 +24,9 @@ class shopCubit extends Cubit<shopStates> {
   static shopCubit get(context) => BlocProvider.of(context);
   int CurrentIndex = 0;
   List<Widget> bottomScreens = [
-    ProductsScreen(),
+   const ProductsScreen(),
     CategoriesScreen(),
-    FavoriteScreen(),
+  const  FavoriteScreen(),
     settingScreen()
   ];
   void changBottom(int index) {
@@ -99,7 +98,7 @@ class shopCubit extends Cubit<shopStates> {
   void changFavorite(int productId) {
     
     favourites[productId] = !favourites[productId]!;
-    emit(ShopFavoritesLoadingState());
+   emit(ShopFavoritesLoadingState());
     emit(ShopFavoritestate());
     DioHelper.postData(
             url: FAVORITE, data: {"product_id": productId}, token: token)
@@ -140,8 +139,8 @@ class shopCubit extends Cubit<shopStates> {
 
   FavoritesModel? favoritesModel;
 
-  Future<void> getFavorites() async {
-    await DioHelper.getData(
+ Future<void>   getFavorites() async {
+  await   DioHelper.getData(
       url: FAVORITE,
       token: token,
     ).then((value) {

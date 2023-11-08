@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:e_commerce1/Home/cubit.dart';
@@ -38,7 +39,7 @@ class ProductsScreen extends StatelessWidget {
             shopCubit.get(context).categoriesModel!,
             MediaQuery.of(context).size.width,
           ),
-          fallback: (context) => Center(child: CircularProgressIndicator()),
+          fallback: (context) =>const Center(child: CircularProgressIndicator()),
         );
       },
     );
@@ -47,7 +48,7 @@ class ProductsScreen extends StatelessWidget {
   Widget productsBuilder(HomeModel model, context,
           CategoriesModel categoriesModel, double screenWidth) =>
       SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics:const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -55,12 +56,12 @@ class ProductsScreen extends StatelessWidget {
             CarouselSlider(
               items: model.data!.banners!
                   .map(
-                    (e) => Image(
-                      image: NetworkImage(e.image!),
-                      fit: BoxFit.cover,
+                    (e) =>    Image(
+                  image: NetworkImage(e.image!),
+                      fit: BoxFit.fill,
                       width: double.infinity,
-                    ),
-                  )
+                         ),)
+                  
                   .toList(),
               options: CarouselOptions(
                 height: screenWidth * 0.5,
@@ -70,16 +71,16 @@ class ProductsScreen extends StatelessWidget {
                 enableInfiniteScroll: true,
                 reverse: false,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 2),
-                autoPlayAnimationDuration: Duration(seconds: 1),
+                autoPlayInterval:const Duration(seconds: 2),
+                autoPlayAnimationDuration:const Duration(seconds: 1),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 scrollDirection: Axis.horizontal,
               ),
             ),
-            SizedBox(
+           const SizedBox(
               height: 10.0,
             ),
-            Text(
+          const  Text(
               "Categories",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
@@ -87,17 +88,17 @@ class ProductsScreen extends StatelessWidget {
                 height: 200,
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
+                    physics:const BouncingScrollPhysics(),
                     itemBuilder: (context, index) =>
                         buildCategoryItem(categoriesModel.data!.data![index]),
-                    separatorBuilder: (context, index) => SizedBox(
+                    separatorBuilder: (context, index) =>const SizedBox(
                           width: 15,
                         ),
                     itemCount: categoriesModel.data!.data!.length)),
-            SizedBox(
+         const   SizedBox(
               height: 10.0,
             ),
-            Text(
+       const     Text(
               "New Products",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
@@ -107,7 +108,7 @@ class ProductsScreen extends StatelessWidget {
                 mainAxisSpacing: 2,
                 childAspectRatio: 1 / 1.65,
                 crossAxisSpacing: 4,
-                physics: NeverScrollableScrollPhysics(),
+                physics:const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 crossAxisCount: screenWidth > 600
                     ? 4
@@ -122,27 +123,27 @@ class ProductsScreen extends StatelessWidget {
           ],
         ),
       );
-  Widget buildCategoryItem(DataModel model) => Stack(
-        alignment: AlignmentDirectional.bottomStart,
-        children: [
-          Image(
-              height: 200,
-              width: 200,
-              image: NetworkImage(
-                (model.image!),
-              )),
-          Container(
-              width: 200,
-              color: Colors.black,
-              child: Text(
-                model.name!,
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ))
-        ],
-      );
+Widget buildCategoryItem(DataModel model) => Stack(
+alignment: AlignmentDirectional.bottomStart,
+children: [
+Image(
+height: 200,
+width: 200,
+image: NetworkImage(
+(model.image!),
+)),
+Container(
+width: 200,
+color: Colors.black,
+child: Text(
+model.name!,
+style:const TextStyle(color: Colors.white),
+textAlign: TextAlign.center,
+maxLines: 1,
+overflow: TextOverflow.ellipsis,
+))
+],
+);
   Widget buildGridProduct(ProductModel model, context) => Container(
         color: Colors.white,
         child: Column(
@@ -150,17 +151,16 @@ class ProductsScreen extends StatelessWidget {
           children: [
             Stack(
               alignment: AlignmentDirectional.bottomStart,
-              children: [
-                Image(
-                  image: NetworkImage(model.image!),
+              children: [Image(image:NetworkImage(
+            model.image!),  
                   width: double.infinity,
                   height: 200,
                 ),
                 if (model.discount != 0)
                   Container(
                     color: Colors.red,
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    child: Text(
+                    padding:const EdgeInsets.symmetric(horizontal: 5),
+                    child:const Text(
                       "DISCOUNT",
                       style: TextStyle(color: Colors.white),
                     ),
@@ -175,7 +175,7 @@ class ProductsScreen extends StatelessWidget {
                     model.name!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style:const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -184,22 +184,22 @@ class ProductsScreen extends StatelessWidget {
               children: [
                 Text(
                   "${model.price.round()}",
-                  style: TextStyle(
+                  style:const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.blue),
                 ),
-                SizedBox(
+             const   SizedBox(
                   width: 30,
                 ),
                 if (model.discount != 0)
                   Text(
                     "${model.oldPrice.round()}",
-                    style: TextStyle(
+                    style:const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.grey,
                       decoration: TextDecoration.lineThrough,
                     ),
                   ),
-                Spacer(),
+          const      Spacer(),
                 IconButton(
                   padding: EdgeInsets.zero,
                   onPressed: () {
@@ -212,7 +212,7 @@ class ProductsScreen extends StatelessWidget {
                               ? kMainColor
                               : Colors.grey,
                       radius: 15,
-                      child: Icon(
+                      child:const Icon(
                         Icons.favorite_border,
                         color: Colors.white,
                         size: 20,

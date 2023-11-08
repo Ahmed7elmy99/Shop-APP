@@ -40,15 +40,15 @@ class searchScreen extends StatelessWidget {
                             },
                             hint: 'Search For Products',
                             controller: search),
-                            SizedBox(height: 10,),
+                        const    SizedBox(height: 10,),
                             if(state is SearchshopLoadingStates)
-                            LinearProgressIndicator(),
-                             SizedBox(height: 10,),
-                             if(state is SearchshopSuccessStates)
-                             Expanded(
+                         const   LinearProgressIndicator(),
+                     const     SizedBox(height: 10,),
+                     if(state is SearchshopSuccessStates)
+                   Expanded(
                                child: ListView.separated(
-                                       itemBuilder: (context,index) => buildFavItem(shopCubit.get(context).favoritesModel!.data!.data![index].product!,context),
-                                       separatorBuilder: (context, index) => SizedBox(height: 5,),
+                           itemBuilder: (context,index) => buildFavItem(shopCubit.get(context).favoritesModel!.data!.data![index].product!,context),
+                                       separatorBuilder: (context, index) =>const SizedBox(height: 5,),
                                        itemCount: shopCubit.get(context).favoritesModel!.data!.data!.length,
                                      ),
                              ),

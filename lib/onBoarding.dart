@@ -13,8 +13,8 @@ class onBoardingScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text("OnBoarding Screen")),
-          SizedBox(
+       const   Center(child: Text("OnBoarding Screen")),
+    const      SizedBox(
             height: 20,
           ),
           ElevatedButton(
@@ -29,7 +29,7 @@ class onBoardingScreen extends StatelessWidget {
       );
     });
             },
-            child: Text(
+            child:const Text(
               'skip',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),

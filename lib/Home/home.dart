@@ -21,8 +21,8 @@ class productScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: kMainColor,
-            title: Text('Salla'),
-            actions: [IconButton(icon: Icon(Icons.search),onPressed: (){
+            title:const Text('Salla'),
+            actions: [IconButton(icon:const Icon(Icons.search),onPressed: (){
                Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => searchScreen()),
@@ -35,7 +35,7 @@ class productScreen extends StatelessWidget {
              backgroundColor: Colors.blue,
   selectedItemColor: Colors.black,
   unselectedItemColor: Colors.blue,
-  selectedLabelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+  selectedLabelStyle:const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             onTap: (index) {
               cubit.changBottom(index);
             },
